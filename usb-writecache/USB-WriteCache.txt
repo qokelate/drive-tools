@@ -1,0 +1,48 @@
+
+
+USB-WriteCache V0.3 - Sets registry parameters for write cache behaviour - Freeware by Uwe Sieber
+
+
+
+This tool set two registry parameters "WriteCacheEnableOverride" and "UserRemovalPolicy" for USB disk devices under
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\<DeviceID>\Device Parameters\Classpnp
+
+They are read and written by means of the DeviceIoControl calls IOCTL_STORAGE_GET_HOTPLUG_INFO and
+IOCTL_STORAGE_SET_HOTPLUG_INFO.
+The used STORAGE_HOTPLUG_INFO data struct has four members that can be read:
+
+typedef struct _STORAGE_HOTPLUG_INFO {
+  DWORD   Size;
+  BOOLEAN MediaRemovable;
+  BOOLEAN MediaHotplug;
+  BOOLEAN DeviceHotplug;
+  BOOLEAN WriteCacheEnableOverride;
+} STORAGE_HOTPLUG_INFO, *PSTORAGE_HOTPLUG_INFO;
+
+Only DeviceHotplug and WriteCacheEnableOverride can be set, see here:
+https://docs.microsoft.com/en-us/windows/win32/api/winioctl/ns-winioctl-storage_hotplug_info
+
+While WriteCacheEnableOverride goes 1:1 to the registry value of the same name things are more
+complicatied with DeviceHotplug:
+
+DeviceHotplug = FALSE   ->   UserRemovalPolicy = 2 (CM_REMOVAL_POLICY_EXPECT_ORDERLY_REMOVAL)
+DeviceHotplug = TRUE    ->   UserRemovalPolicy = 3 (CM_REMOVAL_POLICY_EXPECT_SURPRISE_REMOVAL)
+
+
+With DeviceHotplug OFF and WriteCacheEnableOverride ON you get the most write cache.
+
+With DeviceHotplug ON and WriteCacheEnableOverride OFF you get almost no write cache.
+
+
+
+
+
+Uwe Sieber
+Sept 2021
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+
+SRD / SRE V1.0 - SystemRestore Disable/Enable
+Freeware by Uwe Sieber - www.uwe-sieber.de
+
+Works under XP only.
+
+
+Usage:
+
+SRD DriveSpec
+or
+SRE DriveSpec
+
+DriveSpec can be something like X or X: or a list like D,F-Z
+
+Admin rights are required.
+
+
+Returns Errorlevels:
+
+0 - successfully enabled/disbled at least on one drive (also if
+    it already was enabled/disabled
+1 - parameters are invalid
+2 - system is not XP
+3 - system restore service is not running or cannot be started
+4 - other failure
+
+

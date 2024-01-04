@@ -1,0 +1,64 @@
+
+AttachVHD V1.1 - attaches VHDs
+Freeware by Uwe Sieber - www.uwe-sieber.de
+
+Win32 version works on Windows XP and higher. It does not work on x64 version of Windows.
+x64 version works on x64 versions Windows only.
+
+Windows 7 and higher have build-in VHD support, XP, Server 2003, Vista, Server 2008 need
+Microsoft Virtual Server 2005 installed in its default folder (%ProgramFiles%\Microsoft Virtual Server\Vhdmount),
+here AttachVHD looks for its vhdmount.dll.
+
+Admin previlegs are required or (under Windows 7 and higher) USBDLM V5.4.6+ with CommandInterface 0x100 active.
+
+The posibility to attach a VHD without admin previleges was the reason to create this tool, otherwise there are
+Windows diskspart, powershell and vMount: http://reboot.pro/files/file/477-vmount
+
+
+Usage:
+AttachVHD VHDfile [-na][-n][-w:nnnn]
+
+VHDfile  the VHD/VHDX/ISO file
+-na      no about info
+-n       no wait before close when started standalone
+-w:nnnn  wait nnnn milliseconds before close
+
+
+Sample:
+
+AttachVHD X:\test.vhd
+
+Returns Errorlevels:
+
+0 - successfully attached the VHD file
+1 - invalid parameters
+2 - VHDs not supported
+3 - VHD file not found
+4 - VHD is already attached
+5 - no admin previlegs and no USBDLM command interface
+6 - VHD API error
+> - something else :-)
+
+
+
+
+Licence
+
+
+AttachVHD is Freeware.
+
+Allowed:
+- usage in any environment, including commercial
+- include in software products, including commercial
+- include on CD/DVD of computer magazines
+- making available for download by means of package managers
+
+Not allowed:
+- changing any of the files
+- offer for download by means of a "Downloader" software
+
+
+
+Uwe Sieber
+Aug 2021
+

@@ -1,0 +1,54 @@
+
+UsbStorMaxTransferLen V1.1  -  Freeware by Uwe Sieber - www.uwe-sieber.de
+
+Win32 GUI application which sets the registry value MaxTransferLen for
+USBSTOR devices under Windows 7 SP1, 8 and 10 (and their Server versions).
+
+Modern USB drives supporting the new USB Attached SCSI protocol are not
+listed by this tool unter Windows 8 and 10 since here this new protocol
+supported by native Windows drivers. It's all about the old USB mass storage
+class devices (and Windows 7 which has no build-in support for UAS).
+
+
+Since Windows 7 SP1 the block size of USB data transfers of USBSTOR drives
+can be changed for each device from the default of 64 KB to a maximum of 2 MB.
+A larger transfer length reduces protocol overhead and therefore increases the
+transfer speed.
+
+The setting was introduces in 2011 with the Hotfix 2581464 for Windows 7 SP1:
+https://support.microsoft.com/en-us/help/2581464
+
+Today an updated Windows 7 SP1 is good enough - no need for the hotfix.
+
+The setting is made in the registry on a per USB device base:
+Under HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\usbstor there are
+already some keys for devices which need special treatment as Apple iPods
+(05AC12xx and 05AC13xx). The keys are made of eight hex digits, four for the
+USB vendor ID and four for the product ID where letter x is used as a wildcard.
+
+
+How to use:
+
+First make a speed test by right-clicking a drive and select "Test read Speed".
+
+To make the setting right-click a drive in the list and select "Set MaxTransferLen".
+
+Then right-click it again and select "restart device" for the setting to take effect.
+The restart can succeed only if no other programm is accessing the drive.
+
+Then test the speed again an see if the linear access gets faster and if it is still
+smooth without getting stuck.
+
+Some devices cannot handle a larger transfer length and some USB hubs seem to cause
+problems too.
+
+
+Home: https://www.uwe-sieber.de/drivetools_e.html#UsbStorMaxTransferLen
+
+
+
+Uwe Sieber, Oct 2021
+
+
+
+

@@ -1,0 +1,86 @@
+
+
+ReMount V2.2 - remounts a volume from one mount point to another
+Freeware by Uwe Sieber - www.uwe-sieber.de
+
+Usage:
+
+ReMount X: Y:
+
+X: is the current drive letter
+Y: is the new drive letter
+
+
+ReMount . Y:
+
+.  is a placeholder for the current drive
+Y: is the new drive letter
+
+
+If both mountpoint are in use and shall be swapped then use
+parameter -s
+
+ReMount X: Y: -s
+
+
+For nonsense operations, as remonting the Windows system drive
+or mounting a local drive to a letter uses by a network drive,
+use parameter -f (force). Force can be used too if the
+target drive letter is in use. In this case it is remounted
+to the first available letter to free it up for the desired
+remount.
+
+remount c: x: -f
+
+
+NTFS mount points can be used too:
+
+ReMount X: "E:\MyCardReader\Slot 1"
+
+X: is the current drive letter
+E:\MyCardReader\Slot 1 is the new mount point which must be
+                       an empty folder on an NTFS drive
+
+
+ReMount X: "Slot 1"
+
+X: is the current drive letter
+"Slot 1" is the new mount point relative to the current folder
+         which must be an empty folder on an NTFS drive
+
+
+Since V2.2 an administrative network share is changed to the new drive letter.
+
+
+Works under Windows 2000, XP and higher only.
+
+Under XP it can remount a local drive's letter even it's currently
+used as network drive.
+
+Requires administrator privileges.
+
+
+The Win32 version works under x32 and x64 edtiions of Windows.
+
+
+Homepage:
+http://www.uwe-sieber.de/drivetools_e.html
+
+
+
+Licence
+
+
+ReMount is Freeware.
+
+Allowed:
+- usage in any environment, including commercial
+- include in software products, including commercial
+- include on CD/DVD of computer magazines
+
+Not allowed:
+- changing any of the files
+- make available for download by means of a "Downloader" software of any kind
+
+
+

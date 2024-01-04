@@ -1,0 +1,28 @@
+
+DeleteDosDevice V0.4 - deletes as DosDevice definition
+Freeware by Uwe Sieber
+
+
+
+Usage:
+DeleteDosDevice DosDeviceName [-y]
+
+DosDeviceName is the DOS Device Name definition, e.g. U: or COM1
+-y  assume answer 'Yes'
+
+Admin rights required.
+
+
+Returns Errorlevels:
+
+0 - successfully removed the DosDevice definition
+1 - invalid parameters
+2 - DosDevice not found
+3 - removal of the DosDevice failed
+4 - removal of the DosDevice ok but is still there
+5 - removal of the DosDevice ok but is still there under different name
+
+
+
+
+

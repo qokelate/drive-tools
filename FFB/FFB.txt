@@ -1,0 +1,63 @@
+
+FFB V1.0 - Freeware by Uwe Sieber - www.uwe-sieber.de
+
+FFB - Flush File Buffers is a commandline tool which flushes
+the write cache of one or more storage volumes. It is similar
+to the Unix sync command or the Sysinternals sync tool.
+
+The name comes from the Win32 API call FlushFileBuffers:
+http://msdn.microsoft.com/en-us/library/windows/desktop/aa364439(v=vs.85).aspx
+
+
+The Sysinternals sync tool can flush volumes only which have
+a drive letter. And it forgets drive Z: when called without
+parameters.
+
+Since V0.9 is skips the flushing of sleeping drives unless -f is given.
+VHD, TrueCrpyt and VeraCrypt volumes are resolved to their physical
+drives, other file hosted drives are not, so unwanted wakeups might happen.
+
+Since V1.0 it can purge the file cache, discarding even the read cache.
+This is done by attempting to open the volume for exclusive read access.
+Even if this fails with ERROR_SHARING_VIOLATION it purges the cache. This
+is undocumented behavior but tested from Windows 2000 up to Windows 10 1709.
+
+
+Usage:
+
+FFB [VolumeSpec1] [VolumeSpec2] ... [VolumeSpecN] [-d] [-f]
+
+VolumeSpec can be a drive letter, a drive or any kind of mountpoint
+-p  purge the file cache
+-d  dismount the volume(s) if possible
+-f  force dismount (open handles become invalid) or force flush of sleeping drives
+
+Samples:
+
+FFB C
+FFB C D E
+FFB C: D: E:
+FFB C:\ D:\ E:\
+FFB C:\CardReader\SD
+FFB \\?\Volume{16b5dd59-158f-11e1-b349-00166f0dc865}
+FFB \\?\Volume{16b5dd59-158f-11e1-b349-00166f0dc865}\
+FFB X: -d -f
+
+Flushing and purging a volume's cache requires admin privileges, so,
+restricted users cannot do that.
+
+My Windows service "USB Drive Letter Manager (USBDLM)" since V4.8
+has a command interface which FFB can use for flushing the
+file cache. Purging needs USBDLM V5.3.
+See USBDLM help in section "Settings" for details.
+http://www.uwe-sieber.de/usbdlm_e.html
+
+
+Uwe Sieber
+December 2017
+
+
+
+
+
+

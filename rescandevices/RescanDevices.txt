@@ -1,0 +1,32 @@
+
+
+RescanDevices V0.1
+
+
+Freeware
+
+
+
+Initates a 'Scan for new hardware', that's all.
+
+
+Non interactive Windows application.
+
+
+To feel the delay start it like this:
+
+
+start /w RescanDevices
+
+
+
+
+
+May 2007, Uwe Sieber
+
+
+http:/www.uwe-sieber.de
+mail@uwe-sieber.de
+
+
+

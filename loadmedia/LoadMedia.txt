@@ -1,0 +1,50 @@
+
+LoadMedia V1.6 - Loads a media or brings a volume online
+Freeware by Uwe Sieber - www.uwe-sieber.de
+
+Works under Window 2000, XP, Server 2003, Vista, Win7, Win8, etc
+
+To prepare an external drive for save removal use my tool RemoveDrive:
+http://www.uwe-sieber.de/drivetools_e.html#removedrive
+
+
+Usage:
+LoadMedia DriveSpec: [-l][-h][-w:nnnn]
+
+DriveSpec: is the drive to remove, e.g. U:
+-l  loop until success
+-d  dismount only
+-f  force dismount/eject
+-na  no about info
+-w:nnnn  wait nnnn milliseconds before close
+
+
+
+Admin rights or running USBDLM service with activated command interface required.
+
+
+
+
+Returns Errorlevels:
+
+0 - successfully Loaded a media
+1 - drive valid but media not Loaded
+2 - parameters are invalid
+
+
+
+
+Allowed:
+- usage in any environment, including commercial
+- include in software products, including commercial
+- include on CD/DVD of computer magazines
+- making available for download by means of package managers
+
+Not allowed:
+- changing any of the files
+- offer for download by means of a "Downloader" software of any kind
+
+
+
+Uwe Sieber
+Jan 2019

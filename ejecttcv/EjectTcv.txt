@@ -1,0 +1,81 @@
+
+EjectTrueCryptVolume V3.2.0 - 'ejects' a TrueCrypt or VeraCrypt volume
+Freeware by Uwe Sieber - www.uwe-sieber.de
+
+
+Win32 version works Window 2000, XP and higher, including x64 editions.
+x64 version works under Windows x64 editions only.
+
+Usage:
+EjectTcv DriveSpec [-f][-l][-h][-a][-na][-w:nnnn]
+
+DriveSpec is something that defines the TrueCrpyt Volume to eject,
+e.g. U: (the TrueCrypt volume's drive letter)
+or its VolumeName like Volume{GUID}
+or the path of its container, e.g. a partition name or a file name
+-f       force
+-l       loop until success
+-h       show open handles
+-a       activate windows of processes which hold open handles
+-na      no about info
+-w:nnnn  wait nnnn milliseconds before close
+
+
+Samples:
+
+EjectTcv T:
+EjectTcv T: -L -h
+EjectTcv \Device\Harddisk1\Partition1
+EjectTcv C:\secret.tc
+
+Parameters are case-insensitive.
+
+Since V2.7 it works with VeraCrypt too.
+
+Ejecting a VeraCrypt volume by its container name works since V1.6 of VeraCrypt
+with EjectTcv V2.8+ only and vice versa.
+
+
+
+About open handles
+
+EjectTcv does no use a driver for gaterhing handle information. Therefore
+when hitting the handle of a waiting pipe under XP the function for getting
+the handle name does not return, the thread freezes. Since V3.0 EjectTcv
+uses the Win32 call GetFileType to filter out pipes before calling NtQueryObject.
+GetFileType freezes too when hitting a pipe but when the EjectTcv process
+ends Windows sucessfully kills it in contrast to NtQueryObject.
+Since Vista GetFileType doesn't freeze at all, so no more problem since V3.0.
+
+EjectTcv finds handles of processes of the same or lower trust level. So if
+it is called restricted then it finds handles of restricted processes only.
+Since V3.1 it gets handles of system processes too if started with admin privileges.
+
+
+
+Homepage:
+http://www.uwe-sieber.de/drivetools_e.html
+
+
+
+Licence
+
+
+EjectTcv is Freeware.
+
+Allowed:
+- usage in any environment, including commercial
+- include in software products, including commercial
+- include on CD/DVD of computer magazines
+- making available for download by means of package managers
+
+Not allowed:
+- changing any of the files
+- offering for download by means of a 'Downloader' software of any kind
+
+
+
+
+Uwe Sieber
+December 2019
+
